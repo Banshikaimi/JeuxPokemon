@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeux Pokémon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Jeux Pokémon</h1>
+
+<!-- Choix du jeu -->
+<div id="gameChoice">
+    <p>Choisis le jeu :</p>
+    <button id="hlBtn">Higher / Lower</button>
+    <button id="cryBtn">Devine le cri du Pokémon</button>
+</div>
+
+<!-- HIGHER / LOWER -->
+<div id="hlGame" class="hidden">
+
+    <!-- Écran de sélection de stat -->
+    <div id="statChoice">
+        <p>Choisis la statistique à comparer :</p>
+        <select id="statSelector">
+            <option value="hp">HP</option>
+            <option value="attack">Attack</option>
+            <option value="defense">Defense</option>
+            <option value="special-attack">Special Attack</option>
+            <option value="special-defense">Special Defense</option>
+            <option value="speed">Speed</option>
+            <option value="all">Toutes les stats</option>
+        </select>
+        <button id="startBtn">Commencer le jeu</button>
+    </div>
+
+    <!-- Score -->
+    <div id="scoreBox" class="hidden">
+        Score : <span id="score">0</span> — Meilleur score : <span id="best">0</span><br>
+        Stat comparée : <span id="currentStat"></span>
+    </div>
+
+    <!-- Cartes -->
+    <div class="game hidden">
+        <div class="card" id="card1">
+            <img id="img1">
+            <div class="name" id="name1"></div>
+            <div class="stat" id="stat1"></div>
+        </div>
+
+        <div class="card" id="card2">
+            <img id="img2">
+            <div class="name" id="name2"></div>
+            <div class="stat" id="stat2">???</div>
+        </div>
+    </div>
+
+    <!-- Boutons de choix -->
+    <div class="buttons hidden">
+        <button id="higher" onclick="guess(true)">Plus haut</button>
+        <button id="lower" onclick="guess(false)">Plus bas</button>
+    </div>
+
+    <!-- OVERLAY DE DÉFAITE -->
+    <div id="loseOverlay" class="hidden">
+        <div id="loseBox">
+            <h2>Perdu !</h2>
+            <p id="loseMessage"></p>
+            <button onclick="restartHL()">Rejouer</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- DEVINE LE CRI DU POKÉMON -->
+<div id="cryGame" class="hidden">
+    <h2>Devine le cri du Pokémon</h2>
+    <button id="playCryBtn">Écouter le cri</button><br><br>
+    <input type="text" id="guessInput" placeholder="Nom du Pokémon">
+    <button id="submitGuess">Deviner</button>
+
+    <p id="cryResult"></p>
+
+    <h3>Pokémons déjà devinés :</h3>
+    <ul id="historyCry"></ul>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
